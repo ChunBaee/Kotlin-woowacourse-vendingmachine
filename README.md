@@ -1,30 +1,23 @@
-# 미션 - 다리 건너기
+# 미션 - 자판기
 
-## 🔍 진행 방식
+## 🔍 진행방식
 
-- 미션은 **기능 요구 사항, 프로그래밍 요구 사항, 과제 진행 요구 사항** 세 가지로 구성되어 있다.
-- 세 개의 요구 사항을 만족하기 위해 노력한다. 특히 기능을 구현하기 전에 기능 목록을 만들고, 기능 단위로 커밋 하는 방식으로 진행한다.
-- 기능 요구 사항에 기재되지 않은 내용은 스스로 판단하여 구현한다.
+- 미션은 **기능 요구사항, 프로그래밍 요구사항, 과제 진행 요구사항** 세 가지로 구성되어 있다.
+- 세 개의 요구사항을 만족하기 위해 노력한다. 특히 기능을 구현하기 전에 기능 목록을 만들고, 기능 단위로 커밋 하는 방식으로 진행한다.
+- 기능 요구사항에 기재되지 않은 내용은 스스로 판단하여 구현한다.
 
-## 📮 미션 제출 방법
+## ✉️ 미션 제출 방법
 
 - 미션 구현을 완료한 후 GitHub을 통해 제출해야 한다.
-    - GitHub을 활용한 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고해
-      제출한다.
-- GitHub에 미션을 제출한 후 [우아한테크코스 지원](https://apply.techcourse.co.kr) 사이트에 접속하여 프리코스 과제를 제출한다.
-    - 자세한 방법은 [제출 가이드](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse#제출-가이드) 참고
-    - **Pull Request만 보내고 지원 플랫폼에서 과제를 제출하지 않으면 최종 제출하지 않은 것으로 처리되니 주의한다.**
+   - GitHub을 활용한 제출 방법은 [프리코스 과제 제출 문서](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 를 참고해 제출한다.
+- GitHub에 미션을 제출한 후 [우아한테크코스 지원 플랫폼](https://apply.techcourse.co.kr) 에 접속하여 프리코스 과제를 제출한다.
+   - 자세한 방법은 [링크](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse#제출-가이드) 를 참고한다.
+   - **Pull Request만 보내고, 지원 플랫폼에서 과제를 제출하지 않으면 최종 제출하지 않은 것으로 처리되니 주의한다.**
 
-## 🚨 과제 제출 전 체크 리스트 - 0점 방지
+## ✔️ 과제 제출 전 체크리스트 - 0점 방지
 
-- 기능 구현을 모두 정상적으로 했더라도 **요구 사항에 명시된 출력값 형식을 지키지 않을 경우 0점으로 처리**한다.
-- 기능 구현을 완료한 뒤 아래 가이드에 따라 테스트를 실행했을 때 모든 테스트가 성공하는지 확인한다.
-- **테스트가 실패할 경우 0점으로 처리**되므로, 반드시 확인 후 제출한다.
-
-### 테스트 실행 가이드
-
-- 터미널에서 Mac 또는 Linux 사용자의 경우 `./gradlew clean test` 명령을 실행하고,   
-  Windows 사용자의 경우  `gradlew.bat clean test` 명령을 실행할 때 모든 테스트가 아래와 같이 통과하는지 확인한다.
+- 터미널에서 `java -version`을 실행해 자바 8인지 확인한다. 또는 Eclipse, IntelliJ IDEA와 같은 IDE의 자바 8로 실행하는지 확인한다.
+- 터미널에서 맥 또는 리눅스 사용자의 경우 `./gradlew clean test`, 윈도우 사용자의 경우 `gradlew.bat clean test` 명령을 실행했을 때 모든 테스트가 아래와 같이 통과하는지 확인한다.
 
 ```
 BUILD SUCCESSFUL in 0s
@@ -32,277 +25,143 @@ BUILD SUCCESSFUL in 0s
 
 ---
 
-## 🚀 기능 요구 사항
+## 🚀 기능 요구사항
 
-위아래 둘 중 하나의 칸만 건널 수 있는 다리를 끝까지 건너가는 게임이다.
+반환되는 동전이 최소한이 되는 자판기를 구현한다.
 
-- 위아래 두 칸으로 이루어진 다리를 건너야 한다.
-    - 다리는 왼쪽에서 오른쪽으로 건너야 한다.
-    - 위아래 둘 중 하나의 칸만 건널 수 있다.
-- 다리의 길이를 숫자로 입력받고 생성한다.
-    - 다리를 생성할 때 위 칸과 아래 칸 중 건널 수 있는 칸은 0과 1 중 무작위 값을 이용해서 정한다.
-    - 위 칸을 건널 수 있는 경우 U, 아래 칸을 건널 수 있는 경우 D값으로 나타낸다.
-    - 무작위 값이 0인 경우 아래 칸, 1인 경우 위 칸이 건널 수 있는 칸이 된다.
-- 다리가 생성되면 플레이어가 이동할 칸을 선택한다.
-    - 이동할 때 위 칸은 대문자 U, 아래 칸은 대문자 D를 입력한다.
-    - 이동한 칸을 건널 수 있다면 O로 표시한다. 건널 수 없다면 X로 표시한다.
-- 다리를 끝까지 건너면 게임이 종료된다.
-- 다리를 건너다 실패하면 게임을 재시작하거나 종료할 수 있다.
-    - 재시작해도 처음에 만든 다리로 재사용한다.
-    - 게임 결과의 총 시도한 횟수는 첫 시도를 포함해 게임을 종료할 때까지 시도한 횟수를 나타낸다.
-- 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`를 발생시키고, "[ERROR]"로 시작하는 에러 메시지를 출력 후 그 부분부터 입력을 다시 받는다.
-    - `Exception`이 아닌 `IllegalArgumentException`, `IllegalStateException` 등과 같은 명확한 유형을 처리한다.
+- 자판기가 보유하고 있는 금액으로 동전을 무작위로 생성한다.
+   - 투입 금액으로는 동전을 생성하지 않는다.
+- 잔돈을 돌려줄 때 현재 보유한 최소 개수의 동전으로 잔돈을 돌려준다.
+- 지폐를 잔돈으로 반환하는 경우는 없다고 가정한다.
+- 상품명, 가격, 수량을 입력하여 상품을 추가할 수 있다.
+   - 상품 가격은 100원부터 시작하며, 10원으로 나누어떨어져야 한다.
+- 사용자가 투입한 금액으로 상품을 구매할 수 있다.
+- 남은 금액이 상품의 최저 가격보다 적거나, 모든 상품이 소진된 경우 바로 잔돈을 돌려준다.
+- 잔돈을 반환할 수 없는 경우 잔돈으로 반환할 수 있는 금액만 반환한다.
+   - 반환되지 않은 금액은 자판기에 남는다.
+- 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`를 발생시키고, "[ERROR]"로 시작하는 에러 메시지를 출력 후 해당 부분부터 다시 입력을 받는다.
+- 아래의 프로그래밍 실행 결과 예시와 동일하게 입력과 출력이 이루어져야 한다.
 
-### 입출력 요구 사항
+### ✍🏻 입출력 요구사항
 
-#### 입력
+#### ⌨️ 입력
 
-- 자동으로 생성할 다리 길이를 입력 받는다. 3 이상 20 이하의 숫자를 입력할 수 있으며 올바른 값이 아니면 예외 처리한다.
+- 상품명, 가격, 수량은 쉼표로, 개별 상품은 대괄호([])로 묶어 세미콜론(;)으로 구분한다.
 
 ```
-3
+[콜라,1500,20];[사이다,1000,10]
 ```
 
-- 라운드마다 플레이어가 이동할 칸을 입력 받는다. U(위 칸)와 D(아래 칸) 중 하나의 문자를 입력할 수 있으며 올바른 값이 아니면 예외 처리한다.
+#### 🖥 출력
+
+- 자판기가 보유한 동전
 
 ```
-U
+500원 - 0개
+100원 - 4개
+50원 - 1개
+10원 - 0개
 ```
 
-- 게임 재시작/종료 여부를 입력 받는다. R(재시작)과 Q(종료) 중 하나의 문자를 입력할 수 있으며 올바른 값이 아니면 예외 처리한다.
+- 잔돈은 반환된 동전만 출력한다.
 
 ```
-R
+100원 - 4개
+50원 - 1개
 ```
 
-#### 출력
-
-- 게임 시작 문구
+- 예외 상황 시 에러 문구를 출력해야 한다. 단, 에러 문구는 [ERROR]로 시작해야 한다.
 
 ```
-다리 건너기 게임을 시작합니다.
+[ERROR] 금액은 숫자여야 합니다.
 ```
 
-- 게임 종료 문구
+#### 💻 프로그래밍 실행 결과 예시
 
 ```
-최종 게임 결과
-[ O |   |   ]
-[   | O | O ]
+자판기가 보유하고 있는 금액을 입력해 주세요.
+450
 
-게임 성공 여부: 성공
-총 시도한 횟수: 2
-```
+자판기가 보유한 동전
+500원 - 0개
+100원 - 4개
+50원 - 1개
+10원 - 0개
 
-- 사용자가 이동할 때마다 다리 건너기 결과의 출력 형식은 실행 결과 예시를 참고한다.
-    - 이동할 수 있는 칸을 선택한 경우 O 표시
-    - 이동할 수 없는 칸을 선택한 경우 X 표시
-    - 선택하지 않은 칸은 공백 한 칸으로 표시
-    - 다리의 시작은 `[`, 다리의 끝은 `]`으로 표시
-    - 다리 칸의 구분은 ` | `(앞뒤 공백 포함) 문자열로 구분
-    - 현재까지 건넌 다리를 모두 출력
-- 예외 상황 시 에러 문구를 출력해야 한다. 단, 에러 문구는 "[ERROR]"로 시작해야 한다.
+상품명과 가격, 수량을 입력해 주세요.
+[콜라,1500,20];[사이다,1000,10]
 
-```
-[ERROR] 다리 길이는 3부터 20 사이의 숫자여야 합니다.
-```
+투입 금액을 입력해 주세요.
+3000
 
-#### 실행 결과 예시
+투입 금액: 3000원
+구매할 상품명을 입력해 주세요.
+콜라
 
-```
-다리 건너기 게임을 시작합니다.
+투입 금액: 1500원
+구매할 상품명을 입력해 주세요.
+사이다
 
-다리의 길이를 입력해주세요.
-3
-
-이동할 칸을 선택해주세요. (위: U, 아래: D)
-U
-[ O ]
-[   ]
-
-이동할 칸을 선택해주세요. (위: U, 아래: D)
-U
-[ O | X ]
-[   |   ]
-
-게임을 다시 시도할지 여부를 입력해주세요. (재시도: R, 종료: Q)
-R
-이동할 칸을 선택해주세요. (위: U, 아래: D)
-U
-[ O ]
-[   ]
-
-이동할 칸을 선택해주세요. (위: U, 아래: D)
-D
-[ O |   ]
-[   | O ]
-
-이동할 칸을 선택해주세요. (위: U, 아래: D)
-D
-[ O |   |   ]
-[   | O | O ]
-
-최종 게임 결과
-[ O |   |   ]
-[   | O | O ]
-
-게임 성공 여부: 성공
-총 시도한 횟수: 2
-```
-
-```
-다리 건너기 게임을 시작합니다.
-
-다리의 길이를 입력해주세요.
-3
-
-이동할 칸을 선택해주세요. (위: U, 아래: D)
-U
-[ O ]
-[   ]
-
-이동할 칸을 선택해주세요. (위: U, 아래: D)
-U
-[ O | X ]
-[   |   ]
-
-게임을 다시 시도할지 여부를 입력해주세요. (재시도: R, 종료: Q)
-Q
-최종 게임 결과
-[ O | X ]
-[   |   ]
-
-게임 성공 여부: 실패
-총 시도한 횟수: 1
+투입 금액: 500원
+잔돈
+100원 - 4개
+50원 - 1개
 ```
 
 ---
 
-## 🎯 프로그래밍 요구 사항
+## 🎱 프로그래밍 요구사항
 
-- Kotlin 1.6.20에서 실행 가능해야 한다. **Kotlin 1.6.20에서 정상적으로 동작하지 않을 경우 0점 처리한다.**
-- **Java 코드가 아닌 Kotlin 코드로만 구현해야 한다.**
-- 프로그램 실행의 시작점은 `Application`의 `main()`이다.
-- `build.gradle(.kts)`을 변경할 수 없고, 외부 라이브러리를 사용하지 않는다.
-- [Kotlin 코드 컨벤션](https://github.com/woowacourse/woowacourse-docs/tree/main/styleguide/kotlin) 가이드를 준수하며 프로그래밍한다.
-- 프로그램 종료 시 `System.exit()`를 호출하지 않는다.
-- 프로그램 구현이 완료되면 `ApplicationTest`의 모든 테스트가 성공해야 한다. **테스트가 실패할 경우 0점 처리한다.**
-- 프로그래밍 요구 사항에서 달리 명시하지 않는 한 파일, 패키지 이름을 수정하거나 이동하지 않는다.
+- 프로그램을 실행하는 시작점은 `Application`의 `main()`이다.
+- JDK 8 버전에서 실행 가능해야 한다. **JDK 8에서 정상 동작하지 않을 경우 0점 처리**한다.
+- 자바 코드 컨벤션을 지키면서 프로그래밍한다.
+   - https://naver.github.io/hackday-conventions-java
 - indent(인덴트, 들여쓰기) depth를 3이 넘지 않도록 구현한다. 2까지만 허용한다.
-    - 예를 들어 while문 안에 if문이 있으면 들여쓰기는 2이다.
-    - 힌트: indent(인덴트, 들여쓰기) depth를 줄이는 좋은 방법은 함수(또는 메서드)를 분리하면 된다.
-- 함수(또는 메서드)가 한 가지 일만 하도록 최대한 작게 만들어라.
-- JUnit 5와 AssertJ를 이용하여 본인이 정리한 기능 목록이 정상 동작함을 테스트 코드로 확인한다.
-- else를 지양한다.
-    - 힌트: if 조건절에서 값을 return하는 방식으로 구현하면 else를 사용하지 않아도 된다.
-    - 때로는 if/else, when문을 사용하는 것이 더 깔끔해 보일 수 있다. 어느 경우에 쓰는 것이 적절할지 스스로 고민해 본다.
-- 도메인 로직에 단위 테스트를 구현해야 한다. 단, UI(println, readLine 등) 로직은 제외한다.
-    - 핵심 로직을 구현하는 코드와 UI를 담당하는 로직을 분리해 구현한다.
+   - 예를 들어 while문 안에 if문이 있으면 들여쓰기는 2이다.
+   - 힌트: indent(인덴트, 들여쓰기) depth를 줄이는 좋은 방법은 함수(또는 메소드)를 분리하면 된다.
+- 3항 연산자를 쓰지 않는다.
+- 함수(또는 메소드)의 길이가 15라인을 넘어가지 않도록 구현한다.
+   - 함수(또는 메소드)가 한 가지 일만 잘 하도록 구현한다.
+- else 예약어를 쓰지 않는다.
+   - 힌트: if 조건절에서 값을 return하는 방식으로 구현하면 else를 사용하지 않아도 된다.
+   - else를 쓰지 말라고 하니 switch/case로 구현하는 경우가 있는데 switch/case도 허용하지 않는다.
+- 프로그래밍 요구사항에서 별도로 변경 불가 안내가 없는 경우 파일 수정과 패키지 이동을 자유롭게 할 수 있다.
 
-### 추가된 요구 사항
+### 프로그래밍 요구사항 - Coin
 
-- 함수(또는 메서드)의 길이가 10라인을 넘어가지 않도록 구현한다.
-    - 함수(또는 메서드)가 한 가지 일만 잘하도록 구현한다.
-- 메서드의 파라미터 개수는 최대 3개까지만 허용한다.
-- 아래 있는 `InputView`, `OutputView`, `BridgeGame`, `BridgeMaker`, `BridgeRandomNumberGenerator` 클래스의 요구사항을 참고하여 구현한다.
-    - 각 클래스의 제약 사항은 아래 클래스별 세부 설명을 참고한다.
-    - 이외 필요한 클래스(또는 객체)와 메서드는 자유롭게 구현할 수 있다.
-    - `InputView` 클래스에서만 `camp.nextstep.edu.missionutils.Console` 의 `readLine()` 메서드를 이용해 사용자의 입력을 받을 수 있다.
-    - `BridgeGame` 클래스에서 `InputView`, `OutputView` 를 사용하지 않는다.
+- Coin 클래스를 활용해 구현해야 한다.
+- 필드(인스턴스 변수)인 `amount`의 접근 제어자 private을 변경할 수 없다.
 
-### InputView 클래스
+```java
+public enum Coin {
+    COIN_500(500),
+    COIN_100(100),
+    COIN_50(50),
+    COIN_10(10);
 
-- 제공된 `InputView` 클래스를 활용해 구현해야 한다.
-- `InputView`의 패키지는 변경할 수 있다.
-- `InputView`의 메서드의 시그니처(인자, 이름)와 반환 타입은 변경할 수 있다.
-- 사용자 값 입력을 위해 필요한 메서드를 추가할 수 있다.
+    private final int amount;
 
-```kotlin
-class InputView {
-    fun readBridgeSize(): Int {
-        return 0
+    Coin(final int amount) {
+        this.amount = amount;
     }
 
-    fun readMoving(): String {
-        return ""
-    }
-
-    fun readGameCommand(): String {
-        return ""
-    }
+    // 추가 기능 구현
 }
 ```
 
-### OutputView 클래스
+### 프로그래밍 요구사항 - Randoms, Console
 
-- 제공된 `OutputView` 클래스를 활용해 구현해야 한다.
-- `OutputView`의 패키지는 변경할 수 있다.
-- `OutputView`의 메서드의 이름은 변경할 수 없고, 인자와 반환 타입은 필요에 따라 추가하거나 변경할 수 있다.
-- 값 출력을 위해 필요한 메서드를 추가할 수 있다.
-
-```kotlin
-class OutputView {
-    fun printMap() {}
-
-    fun printResult() {}
-}
-```
-
-### BridgeGame 클래스
-
-- 제공된 `BridgeGame` 클래스를 활용해 구현해야 한다.
-- `BridgeGame`에 필드를 추가할 수 있다.
-- `BridgeGame`의 패키지는 변경할 수 있다.
-- `BridgeGame`의 메서드의 이름은 변경할 수 없고, 인자와 반환 타입은 필요에 따라 추가하거나 변경할 수 있다.
-- 게임 진행을 위해 필요한 메서드를 추가하거나 변경 할 수 있다.
-
-```kotlin
-class BridgeGame {
-    fun move() {}
-
-    fun retry() {}
-}
-```
-
-### BridgeMaker 클래스
-
-- 제공된 `BridgeMaker` 클래스를 활용해 구현해야 한다.
-- `BridgeMaker`의 필드를 변경할 수 없다.
-- `BridgeMaker`의 메서드의 시그니처(인자, 이름)와 반환 타입은 변경할 수 없다.
-
-```kotlin
-class BridgeMaker(private val bridgeNumberGenerator: BridgeNumberGenerator) {
-    fun makeBridge(size: Int): List<String> {
-        return listOf()
-    }
-}
-```
-
-### BridgeRandomNumberGenerator 클래스
-
-- Random 값 추출은 제공된 `bridge.BridgeRandomNumberGenerator`의 `generate()`를 활용한다.
-- `BridgeRandomNumberGenerator`, `BridgeNumberGenerator` 클래스의 코드는 변경할 수 없다.
-
-#### 사용 예시
-
-- 다리 칸을 생성하기 위한 Random 값은 아래와 같이 추출한다.
-
-```kotlin
-val number = bridgeNumberGenerator.generate()
-``` 
-
-### 라이브러리
-
-- [`camp.nextstep.edu.missionutils`](https://github.com/woowacourse-projects/mission-utils)에서 제공하는 `Console` API를 사용하여
-  구현해야 한다.
-    - 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
+- JDK에서 기본 제공하는 Random, Scanner API 대신 `camp.nextstep.edu.missionutils`에서 제공하는 `Randoms`, `Console` API를 활용해 구현해야 한다.
+   - Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInList()`를 활용한다.
+   - 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
+- 프로그램 구현을 완료했을 때 `src/test/java` 디렉터리의 `ApplicationTest`에 있는 모든 테스트 케이스가 성공해야 한다. **테스트가 실패할 경우 0점 처리한다.**
 
 ---
 
-## ✏️ 과제 진행 요구 사항
+## 📈 과제 진행 요구사항
 
-- 미션은 [kotlin-bridge](https://github.com/woowacourse-precourse/kotlin-bridge) 저장소를 Fork & Clone해 시작한다.
-- **기능을 구현하기 전 `docs/README.md`에 구현할 기능 목록을 정리**해 추가한다.
-- **Git의 커밋 단위는 앞 단계에서 `docs/README.md`에 정리한 기능 목록 단위**로 추가한다.
-    - [커밋 메시지 컨벤션](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 가이드를 참고해 커밋 메시지를 작성한다.
-- 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
+- 미션은 [java-vendingmachine-precourse](https://github.com/woowacourse/java-vendingmachine-precourse) 저장소를 Fork/Clone해 시작한다.
+- **기능을 구현하기 전에 java-vendingmachine-precourse/docs/README.md 파일에 구현할 기능 목록을 정리**해 추가한다.
+- **Git의 커밋 단위는 앞 단계에서 README.md 파일에 정리한 기능 목록 단위**로 추가한다.
+   - [AngularJS Commit Message Conventions](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 참고해 commit log를 남긴다.
+- 과제 진행 및 제출 방법은 [프리코스 과제 제출 문서](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 를 참고한다.
