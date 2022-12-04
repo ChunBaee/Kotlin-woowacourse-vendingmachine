@@ -5,5 +5,5 @@ fun main() {
 }
 
 private fun startProgram() {
-    PrintForm().noticeInputVendingPrice()
+    UserInput().inputVendingAlreadyHave()
 }
