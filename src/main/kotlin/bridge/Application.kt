@@ -10,7 +10,9 @@ private fun startProgram() {
 
     val userInputPrice = UserInput().inputUserPrice()
 
-    Buy(userInputPrice, productList).buyProducts()
+    val jandon = Buy(userInputPrice, productList).buyProducts()
+
+    Vending().returnJandon(vendingCoins, jandon)
 }
 
 

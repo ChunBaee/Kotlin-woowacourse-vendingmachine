@@ -9,11 +9,13 @@ class Buy(private var userInput: Int, private val productList: MutableList<Produ
         var input = ""
         while (isFinished) {
             PrintForm().noticeCurrentMoney(userInput)
+            PrintForm().noticeInputProductName()
             input = Console.readLine()
             if (Regex().checkIsCorrectProduct(input, userInput, productList)) {
                 isFinished = buyLogic(input)
             }
         }
+        PrintForm().noticeCurrentMoney(userInput)
         return userInput
     }
 
@@ -22,7 +24,6 @@ class Buy(private var userInput: Int, private val productList: MutableList<Produ
             userInput -= productList.find { it.productName == productName }!!.price
             userInput > productList.minOf { it.price }
         } else {
-            println("false")
             false
         }
     }

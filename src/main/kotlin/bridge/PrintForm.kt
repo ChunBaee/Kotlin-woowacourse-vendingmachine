@@ -27,10 +27,15 @@ class PrintForm {
 
     fun noticeCurrentMoney(money : Int) {
         println("투입 금액: ${money}원")
-        noticeInputProductName()
     }
 
     fun noticeInputProductName() {
         println("구매할 상품명을 입력해 주세요.")
+    }
+
+    fun noticeVendingResult(jandonList : MutableList<Pair<Int, Int>>) {
+        for(i in jandonList) {
+            println("${i.first}원 - ${i.second}개")
+        }
     }
 }
