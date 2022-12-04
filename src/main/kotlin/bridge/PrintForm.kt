@@ -25,4 +25,12 @@ class PrintForm {
         println("투입 금액을 입력해주세요.")
     }
 
+    fun noticeCurrentMoney(money : Int) {
+        println("투입 금액: ${money}원")
+        noticeInputProductName()
+    }
+
+    fun noticeInputProductName() {
+        println("구매할 상품명을 입력해 주세요.")
+    }
 }

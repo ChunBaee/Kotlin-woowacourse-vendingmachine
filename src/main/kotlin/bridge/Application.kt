@@ -10,7 +10,7 @@ private fun startProgram() {
 
     val userInputPrice = UserInput().inputUserPrice()
 
-    Buy(userInputPrice, productList)
+    Buy(userInputPrice, productList).buyProducts()
 }
 
 

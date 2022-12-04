@@ -32,4 +32,8 @@ class Vending {
         val productForm = input.split(",")
         return Products(productForm[0], productForm[1].toInt(), productForm[2].toInt())
     }
+
+    fun returnJandon(vendingCoin : Int, returnCoin : Int) {
+
+    }
 }

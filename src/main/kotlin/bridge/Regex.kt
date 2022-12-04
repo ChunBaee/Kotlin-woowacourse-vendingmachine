@@ -1,8 +1,5 @@
 package bridge
 
-import net.bytebuddy.pool.TypePool.Resolution.Illegal
-import java.util.regex.Pattern
-
 class Regex {
 
     fun checkVendingHavePrice(userInput: String): Boolean {
@@ -15,7 +12,7 @@ class Regex {
         }
     }
 
-    fun checkProduct(userInput: String) : Boolean {
+    fun checkProduct(userInput: String): Boolean {
         return try {
             checkSemiColon(userInput)
             checkEachPriceAndAmount(userInput)
@@ -26,14 +23,33 @@ class Regex {
         }
     }
 
-    fun checkUserInputPrice(userInput: String) : Boolean {
+    fun checkUserInputPrice(userInput: String): Boolean {
         return try {
             checkIsItNumber(userInput)
             true
-        } catch (exception : IllegalArgumentException) {
+        } catch (exception: IllegalArgumentException) {
             PrintForm().noticeErrorMessage(Error.INPUT_PRICE_IS_WRONG)
             false
         }
+    }
+
+    fun checkIsCorrectProduct(userInput: String, inputMoney: Int, productList: MutableList<Products>): Boolean {
+        return try {
+            checkProductNameExists(userInput, productList)
+            checkUserCanBuyThis(inputMoney, productList.find { it.productName == userInput }!!.price)
+            true
+        } catch (exception: IllegalArgumentException) {
+            PrintForm().noticeErrorMessage(Error.INPUT_PRODUCT_IS_WRONG)
+            false
+        }
+    }
+
+    private fun checkProductNameExists(userInput: String, productList: MutableList<Products>) {
+        if (!productList.any { it.productName == userInput }) throw IllegalArgumentException()
+    }
+
+    private fun checkUserCanBuyThis(inputMoney: Int, productPrice: Int) {
+        if(inputMoney < productPrice) throw IllegalArgumentException()
     }
 
     private fun checkIsItNumber(userInput: String) {
