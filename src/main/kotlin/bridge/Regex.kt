@@ -9,11 +9,13 @@ class Regex {
             checkIsItNumber(userInput)
             true
         } catch (exception : IllegalArgumentException) {
+            PrintForm().noticeErrorMessage(Error.INPUT_INCLUDE_WORDS)
             false
         }
     }
 
     private fun checkIsItNumber(userInput : String) {
-        if(!Pattern.matches("^[1-9]*$", userInput)) throw IllegalArgumentException()
+        //!Pattern.matches("^[1-9]*$", userInput)
+        if(!userInput.chars().allMatch { Character.isDigit(it)}) throw IllegalArgumentException()
     }
 }
