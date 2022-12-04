@@ -37,7 +37,7 @@ class Vending {
         val jandonPair = mutableListOf<Pair<Int,Int>>()
         var mReturnCoin = returnCoin
         for(i in vendingCoin.filter { it.second != 0 }) {
-            if(mReturnCoin / i.first >= i.second) {
+            if(mReturnCoin / i.first >= i.second && mReturnCoin < 1000) {
                 jandonPair.add(Pair(i.first, i.second))
                 mReturnCoin -= i.first * i.second
             }
