@@ -11,4 +11,9 @@ class Vending {
         }
         PrintForm().noticeVendingHavePrice(vendingCoins)
     }
+
+    fun addProducts() {
+        PrintForm().noticeInputProducts()
+
+    }
 }

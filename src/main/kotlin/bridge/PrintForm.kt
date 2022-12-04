@@ -16,4 +16,8 @@ class PrintForm {
             println("${i.first}원 - ${i.second}개")
         }
     }
+
+    fun noticeInputProducts() {
+        println("상품명과 가격, 수량을 입력해 주세요.")
+    }
 }
