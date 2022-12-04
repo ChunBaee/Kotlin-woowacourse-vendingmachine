@@ -9,4 +9,11 @@ class PrintForm {
     fun noticeErrorMessage(error : Error) {
         println("[ERROR] ${error.returnErrorMessage()}")
     }
+
+    fun noticeVendingHavePrice(coinList : MutableList<Pair<Int,Int>>) {
+        println("자판기가 보유한 동전")
+        for(i in coinList) {
+            println("${i.first}원 - ${i.second}개")
+        }
+    }
 }

@@ -9,5 +9,6 @@ class Vending {
             vendingCoins.add(Pair(Coin.valueOf(i.name).returnPrice(), mPrice / Coin.valueOf(i.name).returnPrice()))
             mPrice %= Coin.valueOf(i.name).returnPrice()
         }
+        PrintForm().noticeVendingHavePrice(vendingCoins)
     }
 }
