@@ -1,5 +1,6 @@
 package bridge
 
+import net.bytebuddy.pool.TypePool.Resolution.Illegal
 import java.util.regex.Pattern
 
 class Regex {
@@ -21,6 +22,16 @@ class Regex {
             true
         } catch (exception: IllegalArgumentException) {
             PrintForm().noticeErrorMessage(Error.INPUT_PRODUCT_HAS_WRONG_FORM)
+            false
+        }
+    }
+
+    fun checkUserInputPrice(userInput: String) : Boolean {
+        return try {
+            checkIsItNumber(userInput)
+            true
+        } catch (exception : IllegalArgumentException) {
+            PrintForm().noticeErrorMessage(Error.INPUT_PRICE_IS_WRONG)
             false
         }
     }

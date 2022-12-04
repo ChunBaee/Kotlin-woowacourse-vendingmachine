@@ -8,6 +8,9 @@ private fun startProgram() {
     val vendingCoins = Vending().divide(UserInput().inputVendingAlreadyHave())
     val productList = Vending().getProductList(UserInput().inputVendingProducts())
 
+    val userInputPrice = UserInput().inputUserPrice()
+
+    Buy(userInputPrice, productList)
 }
 
 

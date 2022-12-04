@@ -20,4 +20,9 @@ class PrintForm {
     fun noticeInputProducts() {
         println("상품명과 가격, 수량을 입력해 주세요.")
     }
+
+    fun noticeInputUserPrice() {
+        println("투입 금액을 입력해주세요.")
+    }
+
 }

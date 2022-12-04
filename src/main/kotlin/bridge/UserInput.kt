@@ -27,4 +27,15 @@ class UserInput {
         return input.split(";").toMutableList()
     }
 
+    fun inputUserPrice() : Int {
+        var input = ""
+        var isCorrect = false
+        while(!isCorrect) {
+            PrintForm().noticeInputUserPrice()
+            input = Console.readLine()
+            isCorrect = Regex().checkUserInputPrice(input)
+        }
+        return input.toInt()
+    }
+
 }
