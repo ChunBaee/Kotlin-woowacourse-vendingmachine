@@ -57,6 +57,10 @@ class Regex {
         if (!userInput.chars().allMatch { Character.isDigit(it) }) throw IllegalArgumentException()
     }
 
+    private fun checkIsItInRange(userInput : String) {
+        if(userInput.toInt() < 100 || userInput.toInt() % 10 != 0) throw IllegalArgumentException()
+    }
+
     private fun checkSemiColon(userInput: String) {
         if (userInput.count { it == '[' } != userInput.count { it == ';' } + 1) throw IllegalArgumentException()
     }
@@ -66,7 +70,7 @@ class Regex {
         checkItHasAllGwalHo(userInput, mList)
         for (i in mList) {
             checkItHaveAllElement(i)
-            checkPriceIsNumber(i)
+            checkPriceIsRightNumber(i)
             checkAmountIsNumber(i)
         }
     }
@@ -80,9 +84,10 @@ class Regex {
         if (mList.size != 3) throw IllegalArgumentException()
     }
 
-    private fun checkPriceIsNumber(userInput: String) {
+    private fun checkPriceIsRightNumber(userInput: String) {
         val mList = userInput.split(",")
         checkIsItNumber(mList[1])
+        checkIsItInRange(mList[1])
     }
 
     private fun checkAmountIsNumber(userInput: String) {
