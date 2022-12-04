@@ -5,5 +5,7 @@ fun main() {
 }
 
 private fun startProgram() {
-    UserInput().inputVendingAlreadyHave()
+    Vending().divide(UserInput().inputVendingAlreadyHave())
 }
+
+
