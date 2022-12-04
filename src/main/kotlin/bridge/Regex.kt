@@ -55,13 +55,11 @@ class Regex {
 
     private fun checkPriceIsNumber(userInput: String) {
         val mList = userInput.split(",")
-        println(mList[1] + " 1")
         checkIsItNumber(mList[1])
     }
 
     private fun checkAmountIsNumber(userInput: String) {
         val mList = userInput.split(",")
-        println(mList[2] + " 2")
         checkIsItNumber(mList[2].replace("]", ""))
     }
 }
