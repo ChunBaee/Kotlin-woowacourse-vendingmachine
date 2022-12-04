@@ -1,7 +1,11 @@
 package bridge
 
+import bridge.Regex
+import camp.nextstep.edu.missionutils.Console
+
 class Vending {
     var vendingCoins = mutableListOf<Pair<Int, Int>>()
+    var productList = mutableListOf<Products>()
 
     fun divide(price : Int) {
         var mPrice = price
@@ -10,10 +14,5 @@ class Vending {
             mPrice %= Coin.valueOf(i.name).returnPrice()
         }
         PrintForm().noticeVendingHavePrice(vendingCoins)
-    }
-
-    fun addProducts() {
-        PrintForm().noticeInputProducts()
-
     }
 }

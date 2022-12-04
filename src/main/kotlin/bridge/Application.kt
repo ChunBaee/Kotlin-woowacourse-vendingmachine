@@ -6,6 +6,7 @@ fun main() {
 
 private fun startProgram() {
     Vending().divide(UserInput().inputVendingAlreadyHave())
+    UserInput().inputVendingProducts()
 }
 
 

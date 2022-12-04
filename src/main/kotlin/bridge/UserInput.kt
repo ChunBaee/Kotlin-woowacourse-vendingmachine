@@ -15,4 +15,16 @@ class UserInput {
         }
         return input.toInt()
     }
+
+    fun inputVendingProducts() : MutableList<String> {
+        var input = ""
+        var isCorrect = false
+        while(!isCorrect) {
+            PrintForm().noticeInputProducts()
+            input = Console.readLine()
+            isCorrect = Regex().checkProduct(input)
+        }
+        return input.split(";").toMutableList()
+    }
+
 }
