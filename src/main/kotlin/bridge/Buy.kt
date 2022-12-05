@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Console
 class Buy(private var userInput: Int, private var productList: MutableList<Products>) {
     private var orderPair = mutableListOf<String>()
 
-    fun buyProducts() : Int {
+    fun buyProducts(): Int {
         var isFinished = true
         var input = ""
         while (isFinished) {
@@ -13,8 +13,6 @@ class Buy(private var userInput: Int, private var productList: MutableList<Produ
             PrintForm().noticeInputProductName()
             input = Console.readLine()
             if (Regex().checkIsCorrectProduct(input, userInput, productList)) {
-                println(productList.any {it.count != 0})
-                println(productList)
                 isFinished = buyLogic(input, productList)
             }
         }
@@ -23,17 +21,21 @@ class Buy(private var userInput: Int, private var productList: MutableList<Produ
     }
 
     private fun buyLogic(productName: String, mProductList: MutableList<Products>): Boolean {
-        return if (userInput >= mProductList.find { it.productName == productName }!!.price && orderPair.count { it == productName } == mProductList.find { it.productName == productName }!!.count) {
-            userInput -= mProductList.find { it.productName == productName }!!.price
+        return if (userInput >= mProductList.find { it.productName == productName }!!.price) {
             dropProductCount(productName)
+            userInput -= mProductList.find { it.productName == productName }!!.price
             productList = mProductList
-            userInput > mProductList.minOf { it.price }
+            if (orderPair.count { it == productName } == mProductList.find { it.productName == productName }!!.count) {
+                false
+            } else {
+                (userInput > mProductList.minOf { it.price })
+            }
         } else {
             false
         }
     }
 
-    private fun dropProductCount(productName : String) {
+    private fun dropProductCount(productName: String) {
         orderPair.add(productName)
     }
 
