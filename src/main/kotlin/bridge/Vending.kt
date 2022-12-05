@@ -40,6 +40,9 @@ class Vending {
             if(mReturnCoin / i.first >= i.second && mReturnCoin < 1000) {
                 jandonPair.add(Pair(i.first, i.second))
                 mReturnCoin -= i.first * i.second
+            }else if(mReturnCoin / i.first < i.second && mReturnCoin < 1000) {
+                jandonPair.add(Pair(i.first, mReturnCoin / i.first))
+                mReturnCoin -= i.first * (mReturnCoin / i.first)
             }
         }
         PrintForm().noticeVendingResult(jandonPair)

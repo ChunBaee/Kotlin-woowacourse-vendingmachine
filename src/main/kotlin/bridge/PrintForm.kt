@@ -35,7 +35,7 @@ class PrintForm {
 
     fun noticeVendingResult(jandonList : MutableList<Pair<Int, Int>>) {
         println("잔돈")
-        for(i in jandonList) {
+        for(i in jandonList.filter { it.second != 0 }) {
             println("${i.first}원 - ${i.second}개")
         }
     }
