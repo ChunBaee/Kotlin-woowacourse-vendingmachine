@@ -3,7 +3,7 @@ package bridge
 import camp.nextstep.edu.missionutils.Console
 
 class Buy(private var userInput: Int, private val productList: MutableList<Products>) {
-    private var orderPair = mutableListOf<String>()
+    private var orderedProductList = mutableListOf<String>()
 
     fun buyProducts(): Int {
         var isFinished = true
@@ -24,7 +24,7 @@ class Buy(private var userInput: Int, private val productList: MutableList<Produ
         return if (userInput >= productList.find { it.productName == productName }!!.price) {
             dropProductCount(productName)
             userInput -= productList.find { it.productName == productName }!!.price
-            if (orderPair.count { it == productName } == productList.find { it.productName == productName }!!.count) {
+            if (orderedProductList.count { it == productName } == productList.find { it.productName == productName }!!.count) {
                 false
             } else {
                 (userInput > productList.minOf { it.price })
@@ -35,7 +35,7 @@ class Buy(private var userInput: Int, private val productList: MutableList<Produ
     }
 
     private fun dropProductCount(productName: String) {
-        orderPair.add(productName)
+        orderedProductList.add(productName)
     }
 
 }
